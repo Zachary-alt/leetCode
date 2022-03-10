@@ -23,9 +23,9 @@ var fourSum = function (nums, target) {
     let arr = nums.sort((a, b) => a - b)
     for (let a = 0; a < len - 3; a++) {
         if (a > 0 && nums[a] === nums[a - 1]) continue
-        //在确定第一个数之后，如果 \textit{nums}[i]+\textit{nums}[i+1]+\textit{nums}[i+2]+\textit{nums}[i+3]>\textit{target}nums[i]+nums[i+1]+nums[i+2]+nums[i+3]>target，说明此时剩下的三个数无论取什么值，四数之和一定大于 \textit{target}target，因此退出第一重循环
+        //在确定第一个数之后，如果 nums[i]+nums[i+1]+nums[i+2]+nums[i+3]>target，说明此时剩下的三个数无论取什么值，四数之和一定大于 target，因此退出第一重循环
         if (nums[a] + nums[a + 1] + nums[a + 2] + nums[a + 3] > target) break
-        //在确定第一个数之后，如果 \textit{nums}[i]+\textit{nums}[n-3]+\textit{nums}[n-2]+\textit{nums}[n-1]<\textit{target}nums[i]+nums[n−3]+nums[n−2]+nums[n−1]<target，说明此时剩下的三个数无论取什么值，四数之和一定小于 \textit{target}target，因此第一重循环直接进入下一轮，枚举 \textit{nums}[i+1]nums[i+1]；
+        //在确定第一个数之后，如果 nums[i]+nums[n−3]+nums[n−2]+nums[n−1]<target，说明此时剩下的三个数无论取什么值，四数之和一定小于 target，因此第一重循环直接进入下一轮，枚举 nums[i+1]；
         if (nums[a] + nums[len - 3] + nums[len - 2] + nums[len - 1] < target) continue;
 
         for (let b = a + 1; b < len - 2; b++) {

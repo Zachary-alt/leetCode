@@ -26,36 +26,36 @@ function ListNode(val, next) {
  * @param {ListNode[]} lists
  * @return {ListNode}
  */
-// var mergeKLists = function (lists) {
-//     let arr = [], res = new ListNode(null), temp = res
-//     if (!lists.length) return null
-//     if (lists.length === 1) return lists[0]
-//     for (let item of lists) {
-//         while (item) {
-//             arr.push(item.val)
-//             item = item.next
-//         }
-//     }
-//     if (!arr.length) return null
-//     arr.sort((a, b) => a - b)
-//     for (let i = 0; i < arr.length; i++) {
-//         temp.val = arr[i]
-//         if (i !== arr.length - 1) {
-//             temp.next = new ListNode()
-//             temp = temp.next
-//         }
-//     }
-//     return res
-// };
-// var mergeKLists = function (lists) { // 顺序合并
-//     let res = null
-//     if (!lists.length) return null
-//     if (lists.length === 1) return lists[0]
-//     for(let item of lists){
-//         res = mergeTwoList(res,item)
-//     }
-//     return res
-// };
+var mergeKLists = function (lists) { // 取出在生成
+    let arr = [], res = new ListNode(null), temp = res
+    if (!lists.length) return null
+    if (lists.length === 1) return lists[0]
+    for (let item of lists) {
+        while (item) {
+            arr.push(item.val)
+            item = item.next
+        }
+    }
+    if (!arr.length) return null
+    arr.sort((a, b) => a - b)
+    for (let i = 0; i < arr.length; i++) {
+        temp.val = arr[i]
+        if (i !== arr.length - 1) {
+            temp.next = new ListNode()
+            temp = temp.next
+        }
+    }
+    return res
+};
+var mergeKLists = function (lists) { // 顺序合并
+    let res = null
+    if (!lists.length) return null
+    if (lists.length === 1) return lists[0]
+    for(let item of lists){
+        res = mergeTwoList(res,item)
+    }
+    return res
+};
 var mergeKLists = function (lists) { // 分治合并
     return merge(lists, 0, lists.length - 1)
 };

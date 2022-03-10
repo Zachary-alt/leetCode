@@ -15,7 +15,7 @@ var longestPalindrome = function (s) { // 动态规划
     /**
      * dp[i][j]表示s[i...j]是否为回文子串
      * 得到方程：dp[i][j] = (s[i]===s[j])   && dp[i+1][j-1]
-     * 边界条件：j-1-(i+1)+1<2   ====>   j-i<3
+     * 边界条件：j-i+1<2   ====>   j-i<3 //所有讨论是建立在子串长度大于 2 的前提之上
      * 初始化：所有长度为 1 的子串都是回文串
      */
     let len = s.length
@@ -72,7 +72,7 @@ var longestPalindrome = function (s) { // 中心扩展算法
         let curMaxLen = Math.max(oddLen,evenLen)
         if(curMaxLen>maxLen){
             maxLen = curMaxLen
-            // 纸上画图可找到规律
+            // 纸上画图可找到规律 中心位置减去半径
             begin = i - parseInt((maxLen-1)/2)
         }
     }
@@ -89,6 +89,7 @@ function expandAroundCenter(s,left,right){
         }
     }
     // 跳出while循环时，恰好满足s[left]!==s[right]
+    // 因此此时的回文是不包括left和right的，需要去掉这两个字符
     return right-left-1; // right-left+1-2
 }
 console.log(longestPalindrome("cbbd"));

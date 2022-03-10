@@ -25,7 +25,7 @@ var letterCombinations = function (digits) {
         '9': ['w', 'x', 'y', 'z']
     }
     function backtrack(index, curStr) {
-        if (index > len - 1) { // 指针越界，递归的出口
+        if (index === len) { // 指针越界，递归的出口
             res.push(curStr)// 将解推入res
             return// 结束当前递归分支
         }
