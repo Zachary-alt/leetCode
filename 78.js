@@ -20,12 +20,12 @@ var subsets = function (nums) {
             return ans.push(arr.slice())
         }
         arr.push(nums[i])
-        dfs(arr,i+1)
+        dfs(arr.slice(),i+1)
         arr.pop()
-        dfs(arr,i+1)
+        dfs(arr.slice(),i+1)
     }
     dfs([],0)
     return ans
 };
 
-console.log(subsets([1,2,2]));
+console.log(subsets([1,2,3]));
